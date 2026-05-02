@@ -1,0 +1,18 @@
+{
+  "n_letter_sampled": 50,
+  "n_judge_sampled": 50,
+  "letter_disagree": 9,
+  "judge_disagree": 6,
+  "letter_disagreement_rate": 0.18,
+  "judge_disagreement_rate": 0.12,
+  "letter_fraction_of_pipeline": 0.175,
+  "judge_fraction_of_pipeline": 0.825,
+  "weighted_noise_bound": 0.1305,
+  "audit_judge_model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+  "primary_judge_model": "us.anthropic.claude-opus-4-5-20251101-v1:0",
+  "run_ids": [
+    "v0.1-qwen-20260427",
+    "v0.1-llama-20260428",
+    "v0.1-mistral-20260429"
+  ]
+}

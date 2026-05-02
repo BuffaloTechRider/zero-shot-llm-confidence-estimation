@@ -1,0 +1,16 @@
+{
+  "dataset": "TriviaQA (rc.nocontext, validation)",
+  "local_model": "llama3.1:8b",
+  "n": 500,
+  "local_accuracy": 0.72,
+  "logprob_uncertainty_auroc": 0.8000396825396825,
+  "logprob_uncertainty_ci": [
+    0.7577012796861033,
+    0.842416519733158
+  ],
+  "gsa_auroc": 0.7203968253968254,
+  "gsa_ci": [
+    0.6748960828720335,
+    0.7667154240701611
+  ]
+}
