@@ -82,14 +82,14 @@ SIGNAL_AUROC = {
 # ── Figure 1: Cross-dataset transfer scatter ──────────────────────
 
 def fig1_cross_dataset():
-    fig, ax = plt.subplots(1, 1, figsize=(4.5, 4.0))
+    fig, ax = plt.subplots(1, 1, figsize=(4.5, 4.5))
 
     # Diagonal reference
     ax.plot([0.4, 0.9], [0.4, 0.9], "k--", lw=0.8, alpha=0.4, zorder=1)
     ax.fill_between([0.4, 0.9], [0.4, 0.9], [0.9, 0.9], alpha=0.05, color="green")
     ax.fill_between([0.4, 0.9], [0.4, 0.4], [0.4, 0.9], alpha=0.05, color="red")
-    ax.text(0.52, 0.84, "better on\nTriviaQA", fontsize=7, color="green", alpha=0.6, ha="center")
-    ax.text(0.82, 0.48, "worse on\nTriviaQA", fontsize=7, color="red", alpha=0.6, ha="center")
+    ax.text(0.48, 0.86, "better on\nTriviaQA", fontsize=7, color="green", alpha=0.6, ha="center")
+    ax.text(0.84, 0.46, "worse on\nTriviaQA", fontsize=7, color="red", alpha=0.6, ha="center")
 
     for model in MODELS:
         d = CROSS_DATASET[model]
@@ -109,7 +109,9 @@ def fig1_cross_dataset():
     ax.set_xlim(0.45, 0.88)
     ax.set_ylim(0.45, 0.88)
     ax.set_aspect("equal")
-    ax.legend(loc="lower right", fontsize=7, ncol=1, framealpha=0.9)
+    # Place legend below the plot to avoid overlapping data points
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12),
+              fontsize=6.5, ncol=2, framealpha=0.9, columnspacing=1.0)
     ax.set_title("Cross-Dataset Transfer")
     ax.grid(alpha=0.2)
 
@@ -138,12 +140,12 @@ def fig2_learning_curve():
         ax.axhline(y=d["logprob"], color=c, linestyle="--", linewidth=1.0,
                    alpha=0.7, zorder=1)
         # Label the flat line
-        ax.text(1050, d["logprob"] + 0.005, f'logprob\n{d["logprob"]:.3f}',
+        ax.text(1050, d["logprob"] + 0.008, f'logprob {d["logprob"]:.3f}',
                 fontsize=7, color=c, va="bottom")
 
     ax.set_xlabel("RouteLLM Training Examples ($N$)")
     ax.set_ylabel("AUROC")
-    ax.set_xlim(0, 1100)
+    ax.set_xlim(0, 1250)
     ax.set_ylim(0.40, 0.80)
     ax.legend(loc="lower right", fontsize=7.5, framealpha=0.9)
     ax.set_title("Supervised Learning Curve vs. Zero-Shot Logprob")
